@@ -1,0 +1,14 @@
+body {
+  background: url('./images/background.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+P, h1, form { text-align: center }
+
+.special-card {
+  background-color: rgba(245, 245, 245, 0.7);
+  border-radius:  30px;
+
+}

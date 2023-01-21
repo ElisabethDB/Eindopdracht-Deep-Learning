@@ -1,0 +1,62 @@
+<html>
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="../static/styles/main.css" rel="stylesheet" type="text/css"/>
+
+  <title>Schilder Voorspelling</title>
+
+</head>
+<body>
+
+<div class="container ">
+  <div class="card border-0 shadow my-5 special-card">
+    <div class="card-body " >
+      <h1 class="fw-light">Wie is de schilder?</h1>
+      <p>Upload je schilderij en de computer voorspelt of het schilderij van Picasso, Rubens of Mondriaan is.</p>
+      <p>Resultaat : {{ pred }}</p>
+
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <input type="file" id="image-input" name="image" accept="image/*">
+
+            <div id="image-preview"></div>
+
+
+        <div>
+
+            <input class="btn btn-secondary" type="submit" value="Predict">
+            </div>
+        </form>
+
+      <div style="width: 200px; height: 200px"></div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const imageInput = document.getElementById('image-input');
+  const imagePreview = document.getElementById('image-preview');
+
+  imageInput.addEventListener('change', function() {
+    const file = this.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', function() {
+      const img = new Image();
+      img.src = reader.result;
+      imagePreview.appendChild(img);
+    });
+
+    reader.readAsDataURL(file);
+  });
+</script>
+
+</body>
+
+</html>
